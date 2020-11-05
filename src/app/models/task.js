@@ -1,6 +1,6 @@
-const moongose = require('../../config/database');
+const mongoose = require('../../config/database');
 
-const schema = new moongose.Schema({
+const schema = new mongoose.Schema({
     name: {
         desc: "User's name",
         type: String,

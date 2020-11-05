@@ -13,8 +13,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('api/v1/', usersController);
-app.use('api/v1/', tasksController);
+app.use('/', usersController);
+app.use('api/v1', tasksController);
 
 app.listen(config.port, () => {
     console.log(`Listening on ${config.port}`);
