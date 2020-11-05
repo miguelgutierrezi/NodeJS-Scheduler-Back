@@ -1,27 +1,21 @@
-const getTasks = (req, res) => {
+const Task = require('../models/task');
+
+exports.getTasks = (req, res) => {
 
 };
 
-const getTask = (req, res) => {
+exports.getTask = (req, res) => {
 
 };
 
-const createTask = (req, res) => {
+exports.createTask = (req, res) => {
 
 };
 
-const updateTask = (req, res) => {
+exports.updateTask = (req, res) => {
 
 };
 
-const deleteTask = (req, res) => {
+exports.deleteTask = (req, res) => {
 
 };
-
-module.exports = {
-    getTasks: getTasks,
-    getTask: getTask,
-    createTask: createTask,
-    updateTask: updateTask,
-    deleteTask: deleteTask
-}
