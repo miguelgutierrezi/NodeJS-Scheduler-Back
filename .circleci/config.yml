@@ -1,25 +1,12 @@
 version: 2.1
 
-references:
-  working_directory: &working_directory ~/scheduler-back-node
-
-  working_directory_attachment: &working_directory_attachment
-    attach_workspace:
-      at: *working_directory
-
 executors:
   docker-node:
     docker:
       - image: circleci/node:latest
 
-  ubuntu-16-04:
-    working_directory: *working_directory
-    machine:
-      image: ubuntu-1604:201903-01
-      docker_layer_caching: true
-
 jobs:
-  build:
+  build-and-test:
     executor: docker-node
     steps:
       - checkout
@@ -27,18 +14,12 @@ jobs:
           name: install
           command: npm install
 
-  test:
-    executor: docker-node
-    steps:
-      - checkout
       - run:
           name: test
           command: npm test
+          requires: install
 
 workflows:
   build-and-deploy:
     jobs:
       - build
-      - test:
-          requires:
-            - build
