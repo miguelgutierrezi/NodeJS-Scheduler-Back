@@ -16,7 +16,7 @@ jobs:
 
       - run:
           name: test
-          command: npm test
+          command: npm run coverage
           requires: install
 
 workflows:
