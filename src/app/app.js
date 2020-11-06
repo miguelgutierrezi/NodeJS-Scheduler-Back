@@ -8,7 +8,7 @@ const tasksController = require('./controllers/tasksController');
 
 const app = express();
 
-const port = process.env.port || config.port
+const port = process.env.PORT || config.port
 
 app.use(cors());
 
