@@ -1,24 +1,44 @@
-
 version: 2.1
-jobs:
-  build:
+
+references:
+  working_directory: &working_directory ~/scheduler-back-node
+
+  working_directory_attachment: &working_directory_attachment
+    attach_workspace:
+      at: *working_directory
+
+executors:
+  docker-node:
     docker:
       - image: circleci/node:latest
-      - image: docker.elastic.co/elasticsearch/elasticsearch:7.9.1
-        environment:
-          cluster.name: es-test-cluster
-          transport.host: localhost
-          network.host: 127.0.0.1
-          http.port: '9200'
-          discovery.type: single-node
 
+  ubuntu-16-04:
+    working_directory: *working_directory
+    machine:
+      image: ubuntu-1604:201903-01
+      docker_layer_caching: true
+
+jobs:
+  build:
+    executor: docker-node
     steps:
       - checkout
-
       - run:
           name: install
           command: npm install
 
+  test:
+    executor: docker-node
+    steps:
+      - checkout
       - run:
           name: test
           command: npm test
+
+workflows:
+  build-and-deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
