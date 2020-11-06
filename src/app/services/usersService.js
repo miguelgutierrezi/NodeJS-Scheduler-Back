@@ -22,7 +22,12 @@ exports.login = (req, res) => {
                     message: `Invalid password`
                 });
             }
-            res.status(200).send(user);
+            const date = new Date().toISOString();
+            const token = jwt.sign(req.body.username, date);
+            res.status(200).send({
+                token: token,
+                date: date
+            });
         })
         .catch((err) => {
             return res.status(500).send({
