@@ -80,7 +80,7 @@ exports.createUser = (req, res) => {
 
     user.save()
         .then((data) => {
-            res.status(200).send(data)
+            res.status(201).send(data)
         })
         .catch((err) => {
             res.status(500).send({

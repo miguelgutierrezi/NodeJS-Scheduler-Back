@@ -4,9 +4,10 @@
   "description": "Scheduler for e-volution made using nodeJS",
   "main": "src/app/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha src/test/**/*.js --timeout 15000",
     "start": "node src/app/app.js",
-    "dev": "nodemon src/app/app.js"
+    "dev": "nodemon src/app/app.js",
+    "coverage": "nyc --reporter=html --reporter=text mocha src/test/**/*.js --timeout 15000"
   },
   "author": "Miguel Gutierrez",
   "license": "ISC",
@@ -24,6 +25,9 @@
     "chai": "~4.2.0",
     "chai-http": "~4.3.0",
     "mocha": "~8.2.1",
+    "mocha-prepare": "^0.1.0",
+    "mongo-unit": "^2.0.1",
+    "mongodb-memory-server": "^6.9.2",
     "nock": "~13.0.4",
     "nodemon": "~2.0.6",
     "nyc": "~15.1.0",

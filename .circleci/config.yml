@@ -1,0 +1,24 @@
+
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+      - image: docker.elastic.co/elasticsearch/elasticsearch:7.9.1
+        environment:
+          cluster.name: es-test-cluster
+          transport.host: localhost
+          network.host: 127.0.0.1
+          http.port: '9200'
+          discovery.type: single-node
+
+    steps:
+      - checkout
+
+      - run:
+          name: install
+          command: npm install
+
+      - run:
+          name: test
+          command: npm test
