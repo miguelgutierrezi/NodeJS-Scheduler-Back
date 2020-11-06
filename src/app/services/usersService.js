@@ -103,7 +103,7 @@ exports.updateUser = (req, res) => {
                     message: `User with id ${req.params.id} not found`
                 });
             }
-            res.status(200).send(user);
+            res.status(202).send(user);
         })
         .catch((err) => {
             return res.status(500).send({
@@ -120,7 +120,7 @@ exports.deleteUser = (req, res) => {
                     message: `User with id ${req.params.id} not found`
                 });
             }
-            res.status(200).send({
+            res.status(202).send({
                 message: `User with id ${req.params.id} deleted successfully`
             });
         })
