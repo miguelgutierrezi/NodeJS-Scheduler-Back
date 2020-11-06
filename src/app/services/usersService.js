@@ -1,9 +1,42 @@
+const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+
+exports.login = (req, res) => {
+    if (!req.body.username || !req.body.password) {
+        return res.status(400).send({
+            message: 'Missing arguments'
+        });
+    }
+
+    User.find({username: req.body.username})
+        .then((users) => {
+            const user = users[0];
+            if (!user) {
+                return res.status(404).send({
+                    message: `User with username ${req.body.username} not found`
+                });
+            }
+
+            if (user.password !== req.body.password) {
+                return res.status(401).send({
+                    message: `Invalid password`
+                });
+            }
+            res.status(200).send(user);
+        })
+        .catch((err) => {
+            return res.status(500).send({
+                message: err.message || `There was an unknown error`
+            });
+        });
+}
 
 exports.getUsers = (req, res) => {
     User.find()
         .sort({name: -1})
-        .then((users) => {res.status(200).send(users)})
+        .then((users) => {
+            res.status(200).send(users)
+        })
         .catch((err) => {
             res.status(500).send({
                 message: err.message || 'There was an unknown error'
@@ -20,6 +53,11 @@ exports.getUser = (req, res) => {
                 });
             }
             res.status(200).send(user);
+        })
+        .catch((err) => {
+            return res.status(500).send({
+                message: err.message || `There was an unknown error`
+            });
         });
 };
 
@@ -36,11 +74,14 @@ exports.createUser = (req, res) => {
     });
 
     user.save()
-        .then((data) => {res.status(200).send(data)})
+        .then((data) => {
+            res.status(200).send(data)
+        })
         .catch((err) => {
             res.status(500).send({
                 message: err.message || 'There was an unknown error'
-        })});
+            })
+        });
 };
 
 exports.updateUser = (req, res) => {
@@ -61,7 +102,7 @@ exports.updateUser = (req, res) => {
         })
         .catch((err) => {
             return res.status(500).send({
-                message: `There was an unknown error`
+                message: err.message || `There was an unknown error`
             });
         });
 };
@@ -80,7 +121,7 @@ exports.deleteUser = (req, res) => {
         })
         .catch((err) => {
             return res.status(500).send({
-                message: `There was an unknown error`
+                message: err.message || `There was an unknown error`
             });
         });
 };

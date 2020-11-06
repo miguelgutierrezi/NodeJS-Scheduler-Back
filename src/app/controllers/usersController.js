@@ -6,6 +6,7 @@ const userService = require('../services/usersService');
 router.get(`/${config.apiRoute}/users`, userService.getUsers);
 router.get(`/${config.apiRoute}/users/:id`, userService.getUser);
 router.post(`/${config.apiRoute}/users`, userService.createUser);
+router.post(`/${config.apiRoute}/login`, userService.login);
 router.put(`/${config.apiRoute}/users/:id`, userService.updateUser);
 router.delete(`/${config.apiRoute}/users/:id`, userService.deleteUser);
 
