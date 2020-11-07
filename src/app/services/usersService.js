@@ -8,7 +8,7 @@ exports.login = (req, res) => {
         });
     }
 
-    User.find({username: req.body.email})
+    User.find({email: req.body.email})
         .then((users) => {
             const user = users[0];
             if (!user) {
