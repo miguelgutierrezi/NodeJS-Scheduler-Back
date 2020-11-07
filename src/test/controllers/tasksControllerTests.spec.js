@@ -8,8 +8,6 @@ const url = require('../../app/app');
 let taskId, userId, userToken, dateToken;
 
 describe('Should test tasks controller component', () => {
-    after(() => {process.exit(0);});
-
     it ('should create user for test tasks', (done) => {
         const user = {
             name: "User 1",
