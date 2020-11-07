@@ -8,17 +8,15 @@ const tasksController = require('./controllers/tasksController');
 
 const app = express();
 
-const port = process.env.PORT || config.port
-
 app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/', usersController);
-app.use('/', tasksController);
+app.use(`/${config.apiRoute}`, usersController);
+app.use(`/${config.apiRoute}`, tasksController);
 
-app.listen(port, () => {
+app.listen(config.port, () => {
     console.log(`Listening on ${config.port}`);
 });
 

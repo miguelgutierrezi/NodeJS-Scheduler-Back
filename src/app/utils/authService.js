@@ -10,9 +10,14 @@ exports.validateToken = (req, res, next) => {
         });
     }
 
+    if (!req.body.date) {
+        return res.status(400).send({
+            message: 'date argument is required'
+        });
+    }
+
     try {
         const payload = jwt.verify(token, req.body.date);
-        console.log(payload);
         next();
     } catch (error) {
         return res.status(401).send({
