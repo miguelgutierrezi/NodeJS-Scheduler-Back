@@ -1,7 +1,9 @@
 const Task = require('../models/task');
 
 exports.getTasks = (req, res) => {
-
+    return res.status(200).send({
+        message: 'Successful validation'
+    });
 };
 
 exports.getTask = (req, res) => {

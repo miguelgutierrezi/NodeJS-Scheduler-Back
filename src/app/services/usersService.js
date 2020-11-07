@@ -22,8 +22,12 @@ exports.login = (req, res) => {
                     message: `Invalid password`
                 });
             }
+            const dataToToken = {
+                name: user.name,
+                username: user.username
+            }
             const date = new Date().toISOString();
-            const token = jwt.sign(req.body.username, date);
+            const token = jwt.sign(dataToToken, date);
             res.status(200).send({
                 token: token,
                 date: date
