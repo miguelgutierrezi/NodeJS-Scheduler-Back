@@ -2,18 +2,18 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 exports.login = (req, res) => {
-    if (!req.body.username || !req.body.password) {
+    if (!req.body.email || !req.body.password) {
         return res.status(400).send({
             message: 'Missing arguments'
         });
     }
 
-    User.find({username: req.body.username})
+    User.find({username: req.body.email})
         .then((users) => {
             const user = users[0];
             if (!user) {
                 return res.status(404).send({
-                    message: `User with username ${req.body.username} not found`
+                    message: `User with email ${req.body.email} not found`
                 });
             }
 
@@ -24,7 +24,7 @@ exports.login = (req, res) => {
             }
             const dataToToken = {
                 name: user.name,
-                username: user.username
+                email: user.email
             }
             const date = new Date().toISOString();
             const token = jwt.sign(dataToToken, date);
@@ -71,14 +71,14 @@ exports.getUser = (req, res) => {
 };
 
 exports.createUser = (req, res) => {
-    if (!req.body.name || !req.body.username || !req.body.password) {
+    if (!req.body.name || !req.body.email || !req.body.password) {
         return res.status(400).send({
             message: 'Missing arguments'
         });
     }
     const user = new User({
         name: req.body.name,
-        username: req.body.username,
+        email: req.body.email,
         password: req.body.password
     });
 
@@ -94,7 +94,7 @@ exports.createUser = (req, res) => {
 };
 
 exports.updateUser = (req, res) => {
-    if (!req.body.name || !req.body.username || !req.body.password) {
+    if (!req.body.name || !req.body.email || !req.body.password) {
         return res.status(400).send({
             message: 'Missing arguments'
         });

@@ -9,8 +9,8 @@ const schema = new mongoose.Schema({
         trim: false,
         unique: false
     },
-    username: {
-        desc: "User's username",
+    email: {
+        desc: "User's email",
         type: String,
         required: true,
         index: true,

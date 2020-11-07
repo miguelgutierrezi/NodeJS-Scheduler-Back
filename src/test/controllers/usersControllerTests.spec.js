@@ -14,7 +14,7 @@ describe('Should test users controller component', () => {
     it ('should create user', (done) => {
         const user = {
             name: "User 1",
-            username: "Username1",
+            email: "username1@test.com",
             password: "PasswordTest"
         };
         chai.request(url)
@@ -30,7 +30,7 @@ describe('Should test users controller component', () => {
     it ('should not create user, return 400', (done) => {
         const user = {
             name: "User 1",
-            username: "Username1"
+            email: "username1@test.com",
         };
         chai.request(url)
             .post('/api/v1/users')
@@ -44,7 +44,7 @@ describe('Should test users controller component', () => {
     it ('should not create user answer 500', (done) => {
         const user = {
             name: "User 1",
-            username: "Username1",
+            email: "username1@test.com",
             password: "PasswordTest"
         };
         chai.request(url)
@@ -58,7 +58,7 @@ describe('Should test users controller component', () => {
 
     it ('should log an user with a 200 response', (done) => {
         const body = {
-            username: "Username1",
+            email: "username1@test.com",
             password: "PasswordTest"
         };
         chai.request(url)
@@ -72,7 +72,7 @@ describe('Should test users controller component', () => {
 
     it ('should answer login with a 400 response', (done) => {
         const body = {
-            username: "Username1"
+            email: "username1@test.com",
         };
         chai.request(url)
             .post('/api/v1/login')
@@ -85,7 +85,7 @@ describe('Should test users controller component', () => {
 
     it ('should not authorize user with a 401 response', (done) => {
         const body = {
-            username: "Username1",
+            email: "username1@test.com",
             password: "Password"
         };
         chai.request(url)
@@ -99,7 +99,7 @@ describe('Should test users controller component', () => {
 
     it ('should not found an user with a 404 response', (done) => {
         const body = {
-            username: "Username",
+            email: "username1@test.com",
             password: "Password"
         };
         chai.request(url)
@@ -141,7 +141,7 @@ describe('Should test users controller component', () => {
     it ('should update an user with an answer of 202', (done) => {
         const newUser = {
             name: "Test User",
-            username: "Username1",
+            email: "username1@test.com",
             password: "Password"
         };
         chai.request(url)
@@ -156,7 +156,7 @@ describe('Should test users controller component', () => {
     it ('should not update an user with an answer of 400', (done) => {
         const newUser = {
             name: "Test User",
-            username: "Username1"
+            email: "username1@test.com",
         };
         chai.request(url)
             .put(`/api/v1/users/${objectId}`)
@@ -170,7 +170,7 @@ describe('Should test users controller component', () => {
     it ('should not update an user with an answer of 500', (done) => {
         const newUser = {
             name: "Test User",
-            username: "Username1",
+            email: "username1@test.com",
             password: "Password"
         };
         chai.request(url)
@@ -221,7 +221,7 @@ describe('Should test users controller component', () => {
     it ('should not update an user with an answer of 404', (done) => {
         const newUser = {
             name: "Test User",
-            username: "Username1",
+            email: "username1@test.com",
             password: "Password"
         };
         chai.request(url)

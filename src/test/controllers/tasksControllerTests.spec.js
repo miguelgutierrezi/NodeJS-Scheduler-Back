@@ -11,7 +11,7 @@ describe('Should test tasks controller component', () => {
     it ('should create user for test tasks', (done) => {
         const user = {
             name: "User 1",
-            username: "Username1",
+            email: "username1@test.com",
             password: "PasswordTest"
         };
         chai.request(url)
@@ -26,7 +26,7 @@ describe('Should test tasks controller component', () => {
 
     it ('should log an test user with a 200 response', (done) => {
         const body = {
-            username: "Username1",
+            email: "username1@test.com",
             password: "PasswordTest"
         };
         chai.request(url)
