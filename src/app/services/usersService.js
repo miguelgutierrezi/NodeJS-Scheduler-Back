@@ -34,7 +34,8 @@ exports.login = (req, res) => {
             const token = jwt.sign(dataToToken, date);
             res.status(200).send({
                 token: token,
-                date: date
+                date: date,
+                userId: user._id
             });
         })
         .catch((err) => {
