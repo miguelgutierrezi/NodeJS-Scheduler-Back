@@ -231,13 +231,13 @@ describe('Should test tasks controller component', () => {
             });
     });
 
-    it ('should delete an specific user', (done) => {
+    it ('should delete an specific task', (done) => {
         const body = {
             date: dateToken
         };
 
         chai.request(url)
-            .delete(`/api/v1/tasks/${userId}/${taskId}`)
+            .put(`/api/v1/tasks/delete/${userId}/${taskId}`)
             .set('authorization', `Bearer ${userToken}`)
             .send(body)
             .end((err, res) => {
@@ -246,13 +246,13 @@ describe('Should test tasks controller component', () => {
             });
     });
 
-    it ('should not delete an specific user with an answer of 500', (done) => {
+    it ('should not delete an specific task with an answer of 500', (done) => {
         const body = {
             date: dateToken
         };
 
         chai.request(url)
-            .delete(`/api/v1/tasks/${userId}/abc`)
+            .put(`/api/v1/tasks/delete/${userId}/abc`)
             .set('authorization', `Bearer ${userToken}`)
             .send(body)
             .end((err, res) => {
@@ -261,13 +261,13 @@ describe('Should test tasks controller component', () => {
             });
     });
 
-    it ('should delete all users from an specific user', (done) => {
+    it ('should delete all tasks from an specific user', (done) => {
         const body = {
             date: dateToken
         };
 
         chai.request(url)
-            .delete(`/api/v1/tasks/${userId}`)
+            .put(`/api/v1/tasks/${userId}`)
             .set('authorization', `Bearer ${userToken}`)
             .send(body)
             .end((err, res) => {
@@ -309,13 +309,13 @@ describe('Should test tasks controller component', () => {
             });
     });
 
-    it ('should not delete an specific user with an answer of 404', (done) => {
+    it ('should not delete an specific task with an answer of 404', (done) => {
         const body = {
             date: dateToken
         };
 
         chai.request(url)
-            .delete(`/api/v1/tasks/${userId}/${taskId}`)
+            .put(`/api/v1/tasks/delete/${userId}/${taskId}`)
             .set('authorization', `Bearer ${userToken}`)
             .send(body)
             .end((err, res) => {
