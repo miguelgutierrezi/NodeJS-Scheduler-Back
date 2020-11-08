@@ -1,3 +1,4 @@
+const cypherService = require('../utils/cypherService');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
@@ -17,7 +18,10 @@ exports.login = (req, res) => {
                 });
             }
 
-            if (user.password !== req.body.password) {
+            const decryptedBodyPassword = cypherService.decrypt(req.body.password);
+            const decryptedPassword = cypherService.decrypt(user.password);
+
+            if (decryptedBodyPassword !== decryptedPassword) {
                 return res.status(401).send({
                     message: `Invalid password`
                 });

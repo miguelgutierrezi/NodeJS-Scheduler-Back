@@ -12,7 +12,7 @@ describe('Should test tasks controller component', () => {
         const user = {
             name: "User 1",
             email: "username1@test.com",
-            password: "PasswordTest"
+            password: "U2FsdGVkX1+bTz19jIat8LjwbIaSGQNkxvijBh3agQc="
         };
         chai.request(url)
             .post('/api/v1/users')
@@ -27,7 +27,7 @@ describe('Should test tasks controller component', () => {
     it ('should log an test user with a 200 response', (done) => {
         const body = {
             email: "username1@test.com",
-            password: "PasswordTest"
+            password: "U2FsdGVkX1+bTz19jIat8LjwbIaSGQNkxvijBh3agQc="
         };
         chai.request(url)
             .post('/api/v1/login')

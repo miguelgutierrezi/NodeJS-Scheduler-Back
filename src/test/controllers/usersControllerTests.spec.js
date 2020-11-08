@@ -15,7 +15,7 @@ describe('Should test users controller component', () => {
         const user = {
             name: "User 1",
             email: "username1@test.com",
-            password: "PasswordTest"
+            password: "U2FsdGVkX1+bTz19jIat8LjwbIaSGQNkxvijBh3agQc="
         };
         chai.request(url)
             .post('/api/v1/users')
@@ -45,7 +45,7 @@ describe('Should test users controller component', () => {
         const user = {
             name: "User 1",
             email: "username1@test.com",
-            password: "PasswordTest"
+            password: "U2FsdGVkX1+bTz19jIat8LjwbIaSGQNkxvijBh3agQc="
         };
         chai.request(url)
             .post('/api/v1/users')
@@ -59,7 +59,7 @@ describe('Should test users controller component', () => {
     it ('should log an user with a 200 response', (done) => {
         const body = {
             email: "username1@test.com",
-            password: "PasswordTest"
+            password: "U2FsdGVkX1+bTz19jIat8LjwbIaSGQNkxvijBh3agQc="
         };
         chai.request(url)
             .post('/api/v1/login')
@@ -86,7 +86,7 @@ describe('Should test users controller component', () => {
     it ('should not authorize user with a 401 response', (done) => {
         const body = {
             email: "username1@test.com",
-            password: "Password"
+            password: "U2FsdGVkX1+"
         };
         chai.request(url)
             .post('/api/v1/login')
@@ -99,8 +99,8 @@ describe('Should test users controller component', () => {
 
     it ('should not found an user with a 404 response', (done) => {
         const body = {
-            email: "username1@test.com",
-            password: "Password"
+            email: "username@test.com",
+            password: "U2FsdGVkX1+bTz19jIat8LjwbIaSGQNkxvijBh3agQc="
         };
         chai.request(url)
             .post('/api/v1/login')
@@ -142,7 +142,7 @@ describe('Should test users controller component', () => {
         const newUser = {
             name: "Test User",
             email: "username1@test.com",
-            password: "Password"
+            password: "U2FsdGVkX1+bTz19jIat8LjwbIaSGQNkxvijBh3agQc="
         };
         chai.request(url)
             .put(`/api/v1/users/${objectId}`)
@@ -171,7 +171,7 @@ describe('Should test users controller component', () => {
         const newUser = {
             name: "Test User",
             email: "username1@test.com",
-            password: "Password"
+            password: "U2FsdGVkX1+bTz19jIat8LjwbIaSGQNkxvijBh3agQc="
         };
         chai.request(url)
             .put('/api/v1/users/abc')
@@ -222,7 +222,7 @@ describe('Should test users controller component', () => {
         const newUser = {
             name: "Test User",
             email: "username1@test.com",
-            password: "Password"
+            password: "U2FsdGVkX1+bTz19jIat8LjwbIaSGQNkxvijBh3agQc="
         };
         chai.request(url)
             .put(`/api/v1/users/${objectId}`)
