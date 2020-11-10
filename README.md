@@ -8,6 +8,10 @@ This api was developed using NodeJS Framework, and using mongodb for persistence
 
 For cloning the repo run the following command: `git clone https://github.com/miguelgutierrezi/NodeJS-Scheduler-Back.git`
 
+## Installing dependencies
+
+Inside the main folder, you should run `npm install`
+
 ## Running unit tests
 
 There are two ways for running unit tests in this project. The first one is to run the tests without coverage using the following command `npm run test`.
